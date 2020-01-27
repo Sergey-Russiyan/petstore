@@ -1,5 +1,11 @@
 demo_job_1: 
-  script: 
-    - "echo Hello from petstore"
+  cache: ~
+  paths: 
+    - .m2/repository/
+    - target/
   tags: 
     - ci
+  test: 
+    script: 
+      - mvn clean verify
+    stage: test

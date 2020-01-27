@@ -1,12 +1,8 @@
 package starter.status;
 
-import com.google.gson.JsonParser;
 import io.restassured.RestAssured;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
-//import org.json.JSONObject;
-
-import javax.swing.*;
 
 import static starter.WebServiceEndPoints.*;
 
