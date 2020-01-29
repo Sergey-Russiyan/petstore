@@ -3,7 +3,9 @@ package starter.status;
 import io.restassured.RestAssured;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
+import starter.entity.UserTestObject;
 
+import static io.restassured.http.ContentType.JSON;
 import static starter.WebServiceEndPoints.*;
 
 public class Application {
@@ -38,6 +40,7 @@ public class Application {
         SerenityRest.enableLoggingOfRequestAndResponseIfValidationFails();
         SerenityRest.delete(PET_ID.getUrl() + petId);
     }
+
     // store
     @Step("Get store inventory")
     public void getStoreInventory() {
@@ -53,9 +56,17 @@ public class Application {
     public void getUserLogout() {
         SerenityRest.get(GET_USER_LOGOUT.getUrl());
     }
+
     @Step("Delete user")
     public void deleteUserWithName(String userName) {
         SerenityRest.delete(GET_USER_LOGOUT.getUrl() + userName);
     }
-
+    @Step("Update user")
+    public void updateUserWithName(String userName, UserTestObject user) {
+        SerenityRest.
+                given().log().all().
+                contentType(JSON).
+                body(new com.google.gson.Gson().toJson(user.asJson())).
+                put(USER_WITH_NAME.getUrl() + userName);
+    }
 }

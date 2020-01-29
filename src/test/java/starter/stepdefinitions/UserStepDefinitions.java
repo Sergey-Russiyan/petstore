@@ -39,15 +39,18 @@ public class UserStepDefinitions {
     public void i_check_user_logout() {
         theApplication.getUserLogout();
     }
+
     @When("I delete user with name {string}")
     public void i_delete_user_with_name(String userName) {
         theApplication.deleteUserWithName(userName);
     }
+
     @When("I update existing user {string}")
     public void i_update_user_with_name(String userName) {
         UserTestObject user = new UserTestObject();
-        theApplication.deleteUserWithName(userName);
+        theApplication.updateUserWithName(userName, user);
     }
+
     @Then("the user should be log out from application")
     public void the_user_should_be_log_out_from_app() {
         GenericStepDefinitions gen = new GenericStepDefinitions();
@@ -55,7 +58,6 @@ public class UserStepDefinitions {
         assertEquals("Unexpected header value for logged in user",
                 SerenityRest.lastResponse().header("connection"), "close");
     }
-
     @Then("the API should return valid logged in response")
     public void the_API_should_return_valid_logged_in_response() {
         GenericStepDefinitions gen = new GenericStepDefinitions();
