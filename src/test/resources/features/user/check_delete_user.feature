@@ -1,4 +1,4 @@
-  Feature: Check on inventory status
+  Feature: Delete existing user
 
   The delete `/user/{username}` end allows to delete user by username
 

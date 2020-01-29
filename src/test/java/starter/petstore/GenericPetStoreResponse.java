@@ -6,7 +6,8 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.toMap;
 
-public class PetStoreResponse {
+public class GenericPetStoreResponse {
+
     public Map<String, String> returned() {
        return mapOfStringsFrom(SerenityRest.lastResponse().getBody().as(Map.class));
     }
