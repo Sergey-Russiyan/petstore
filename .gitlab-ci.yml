@@ -1,11 +1,12 @@
-demo_job_1: 
-  cache: ~
-  paths: 
-    - .m2/repository/
-    - target/
-  tags: 
+test:
+  allow_failure: true
+  artifacts:
+    expire_in: ~
+    paths:
+      - build/target/site/serenity/
+    when: always
+  script:
+    - "mvn clean compile verify"
+  tags:
     - ci
-  test: 
-    script: 
-      - mvn clean verify
-    stage: test
+    - shell

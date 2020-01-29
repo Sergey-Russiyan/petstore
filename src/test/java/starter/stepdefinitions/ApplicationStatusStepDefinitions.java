@@ -14,6 +14,7 @@ import starter.status.Application;
 import java.util.List;
 import java.util.Map;
 
+import static net.serenitybdd.rest.SerenityRest.rest;
 import static net.serenitybdd.rest.SerenityRest.restAssuredThat;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -74,7 +75,8 @@ public class ApplicationStatusStepDefinitions {
     }
     @Then("the API should return response which contains {string}")
     public void the_API_should_return_part_contains(String expectedMessage) {
-        restAssuredThat(lastResponse -> lastResponse.body(contains(expectedMessage)));
+        assertTrue("Response not contains: " + expectedMessage,
+                SerenityRest.lastResponse().body().asString().contains(expectedMessage));
     }
     @Then("the API should return response which matches {string}")
     public void the_API_should_return_part_matches(String expectedRegexp) {

@@ -5,8 +5,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.RestAssured;
 import net.thucydides.core.annotations.Steps;
-import starter.templates.FieldValues;
-import starter.templates.MergeFrom;
 import starter.petstore.PetStoreResponse;
 import starter.petstore.GetPetWithId;
 
@@ -27,20 +25,8 @@ public class UserLoginStepDefinitions {
 
     String trade;
 
-    @Given("the following trade:")
-    public void the_following_trade(List<Map<String, String>> tradeDetails) throws IOException {
 
-        trade = MergeFrom.template("templates/trade.json")
-                         .withDefaultValuesFrom(FieldValues.in("templates/standard-trade.properties"))
-                         .withFieldsFrom(tradeDetails.get(0));
-    }
-
-    @When("I record the trade")
-    public void i_record_the_trade() {
-        getPetWithId.get_pet_with_Id(trade);
-    }
-
-    @Then("the recorded trade should include the following details:")
+    @Then("the response should include the following details:")
     public void response_should_contain_the_following_details(List<Map<String, String>> tradeDetails) {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         restAssuredThat(response -> response.statusCode(200));
