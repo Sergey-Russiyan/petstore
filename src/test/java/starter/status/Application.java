@@ -19,7 +19,6 @@ public class Application {
         SerenityRest.get(STATUS.getUrl());
     }
 
-
     @Step("Get store inventory")
     public void getStoreInventory() {
         SerenityRest.get(GET_STORE_INVENTORY.getUrl());

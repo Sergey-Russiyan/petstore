@@ -4,9 +4,9 @@ This tutorial show you how to get started with REST-API testing using Serenity a
 
 ## Get the code
 
-Git:
+Execute Git command: `https://github.com/Sergey-Russiyan/petstore`
 
-Or simply [download a zip](https://github.com/) file.
+Or simply [download a zip](https://github.com/Sergey-Russiyan/petstore) file.
 
 ## The starter project
 The best place to start with Serenity and Cucumber is to clone or download the starter project on Github ([https://github.com/](https://github.com/)). 
