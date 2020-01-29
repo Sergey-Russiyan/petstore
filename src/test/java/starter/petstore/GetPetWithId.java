@@ -14,6 +14,6 @@ public class GetPetWithId {
                 .header("Content-Type", "application/json")
                 .body(petId)
                 .when()
-                .get(WebServiceEndPoints.GET_PET.getUrl());
+                .get(WebServiceEndPoints.PET_ID.getUrl());
     }
 }

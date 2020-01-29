@@ -1,8 +1,8 @@
-  Feature: Check on inventory status
+  Feature: Check on user can logout
 
-  The `/pet/{id}` end point returns pet with id
+  The `/user/logout` allows user to logout
 
-  Scenario: Application inventory end-point
+  Scenario: Application user logout end-point
     Given the application is running
     When I check the store inventory
     Then the API should return valid JSON
