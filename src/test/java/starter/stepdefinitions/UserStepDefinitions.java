@@ -50,7 +50,18 @@ public class UserStepDefinitions {
         UserTestObject user = new UserTestObject();
         theApplication.updateUserWithName(userName, user);
     }
-
+    @When("I post new valid user")
+    public void i_post_new_valid_user() {
+        theApplication.postUser(new UserTestObject());
+    }
+    @When("I post array of valid users {int}")
+    public void i_post_array_of_valid_users(int usersQty) {
+        theApplication.postUsersArray(usersQty);
+    }
+    @When("I post list of valid users {int}")
+    public void i_post_list_of_valid_users(int usersQty) {
+        theApplication.postUsersList(usersQty);//todo ask dev - actually there are no difference in requests bracketing
+    }
     @Then("the user should be log out from application")
     public void the_user_should_be_log_out_from_app() {
         GenericStepDefinitions gen = new GenericStepDefinitions();

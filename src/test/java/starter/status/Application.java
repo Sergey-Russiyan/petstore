@@ -47,6 +47,7 @@ public class Application {
         SerenityRest.get(GET_STORE_INVENTORY.getUrl());
     }
 
+
     // user
     @Step("Get user valid Login")
     public void getUserLogin(String userName, String userLogin) {
@@ -59,14 +60,42 @@ public class Application {
 
     @Step("Delete user")
     public void deleteUserWithName(String userName) {
-        SerenityRest.delete(GET_USER_LOGOUT.getUrl() + userName);
+        SerenityRest.delete(USER.getUrl() +"/"+ userName);
+    }
+    @Step("Post new user")
+    public void postUser(UserTestObject user) {
+        SerenityRest.
+                given().log().all().
+                contentType(JSON).
+                body(user.asFlatJson()).
+                post(USER.getUrl());
+    }
+    @Step("Post array of users")
+    public void postUsersArray(int usersQty) {
+        String body = new UserTestObject().asArrayOf(usersQty);
+        SerenityRest.
+                given().log().all().
+                contentType(JSON).
+                body(body).
+                post(USER_CREATE_ARRAY.getUrl());
+    }
+    @Step("Post list of users")
+    public void postUsersList(int usersQty) {
+        String body = new UserTestObject().asListOf(usersQty);
+        SerenityRest.
+                given().log().all().
+                contentType(JSON).
+                body(body).
+                post(USER_CREATE_LIST.getUrl());
     }
     @Step("Update user")
     public void updateUserWithName(String userName, UserTestObject user) {
         SerenityRest.
                 given().log().all().
                 contentType(JSON).
-                body(new com.google.gson.Gson().toJson(user.asJson())).
-                put(USER_WITH_NAME.getUrl() + userName);
+                body(user.asFlatJson()).
+                put(USER.getUrl() +"/"+ userName);
     }
+
+
 }

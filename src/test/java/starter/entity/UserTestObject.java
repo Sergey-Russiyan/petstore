@@ -2,12 +2,21 @@ package starter.entity;
 
 import com.google.gson.JsonObject;
 import lombok.Data;
+import org.seleniumhq.jetty9.server.Authentication;
+import starter.utils.RandomUtils;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Data
 public class UserTestObject {
+
+    Logger log = Logger.getLogger(UserTestObject.class.getName());
+
+    private String randomJibrish = new RandomUtils().getLoremIpsum();
+    private int randomAnswerForEverything = new RandomUtils().getRand();
 
     public int id;
     public String username;
@@ -19,16 +28,48 @@ public class UserTestObject {
     public int userStatus;
 
     public UserTestObject(){
-        this.id = 0;
-        this.username = "name";
-        this.firstName = "firstName";
-        this.lastName = "lastName";
-        this.email = "test@fake.mail";
-        this.password = "s0Me_pa5S!";
-        this.phone = "0661234567";
-        this.userStatus = 0;
+        this.id = 0 + randomAnswerForEverything;
+        this.username = "name" + randomJibrish;
+        this.firstName = "firstName" + randomJibrish;
+        this.lastName = "lastName" + randomJibrish;
+        this.email = randomJibrish +"@fake.mail";
+        this.password = "s0Me_pa5S!" + randomJibrish;
+        this.phone = "0661234567" + randomAnswerForEverything;
+        this.userStatus = 0 + randomAnswerForEverything;
     }
-    public String asJson(){
+    public String asFlatJson(){
+        return new com.google.gson.Gson().toJson(asString());
+    }
+    private String ascCollection(String outerBorder, int quantity){
+        isUsersQuantityValid(quantity);
+        StringBuilder build = new StringBuilder().append(outerBorder, 0, 1);
+        for(int i = 0; i <= quantity;){
+            UserTestObject u = new UserTestObject();
+            build.append(u.asFlatJson());
+            build.append(",");
+            i++;
+        }
+        build.setLength(build.length() - 1);//remove lat coma
+        build.append(outerBorder.substring(1));
+        return new com.google.gson.Gson().toJson(build);
+    }
+    public String asArrayOf(int quantity){
+        return ascCollection("[]", quantity);
+    }
+    public String asListOf(int quantity){
+        return ascCollection("<>", quantity);
+    }
+    private boolean isUsersQuantityValid(int quantity){
+        boolean result = false;
+        if(quantity < 1 || quantity > 10000) {
+            log.info("Invalid quantity of users has been provided: " + quantity);
+            //todo throw custom exception like InvalidTestDataException (no time for that right now)
+            result = true;
+        }
+        return result;
+    }
+
+    public String asString(){
         JsonObject innerObject = new JsonObject();
         innerObject.addProperty("id", this.id);
         innerObject.addProperty("username", this.username);

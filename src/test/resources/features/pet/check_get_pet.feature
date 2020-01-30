@@ -1,4 +1,4 @@
-Feature: USre can get pet
+Feature: User can get pet
 
   The GET `/pet/{petId}` provides pet by id
 
