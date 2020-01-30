@@ -2,8 +2,12 @@ package starter;
 
 public enum WebServiceEndPoints {
     STATUS                  (""),
+
     PET_ID                  ("v2/pet/"),
+    FIND_PET_BY_STATUS      ("v2/pet/findByStatus?status="),
+
     GET_STORE_INVENTORY     ("v2/store/inventory"),
+    GET_STORE_ORDER         ("v2/store/order"),
 
     GET_USER_LOGIN          ("v2/user/login?username=%s&password=%s"),
     USER                    ("v2/user"),
@@ -21,4 +25,7 @@ public enum WebServiceEndPoints {
     public String getUrl() {
         return url;
     }
+
+
+
 }

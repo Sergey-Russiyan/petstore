@@ -20,7 +20,6 @@ public class UserStepDefinitions {
     @Steps
     Application theApplication;
 
-
     @When("I check user login with valid credentials:")
     public void i_check_user_login_with_valid_credentials(List<Map<String, String>> credentials) {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
@@ -76,4 +75,5 @@ public class UserStepDefinitions {
         gen.the_API_should_return_header("X-Rate-Limit",  "5000");
         gen.the_API_should_return_header_matching("X-Expires-After", "\\w{3}\\s\\w{3}([\\s|:]\\d{2}){4}\\sUTC\\s20[\\d]{2}");
     }
+
 }

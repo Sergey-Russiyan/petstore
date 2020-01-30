@@ -2,13 +2,8 @@ package starter.entity;
 
 import com.google.gson.JsonObject;
 import lombok.Data;
-import org.seleniumhq.jetty9.server.Authentication;
 import starter.utils.RandomUtils;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 @Data
 public class UserTestObject {
@@ -28,18 +23,19 @@ public class UserTestObject {
     public int userStatus;
 
     public UserTestObject(){
-        this.id = 0 + randomAnswerForEverything;
+        this.id = randomAnswerForEverything;
         this.username = "name" + randomJibrish;
         this.firstName = "firstName" + randomJibrish;
         this.lastName = "lastName" + randomJibrish;
         this.email = randomJibrish +"@fake.mail";
         this.password = "s0Me_pa5S!" + randomJibrish;
         this.phone = "0661234567" + randomAnswerForEverything;
-        this.userStatus = 0 + randomAnswerForEverything;
+        this.userStatus = randomAnswerForEverything;
     }
     public String asFlatJson(){
         return new com.google.gson.Gson().toJson(asString());
     }
+
     private String ascCollection(String outerBorder, int quantity){
         isUsersQuantityValid(quantity);
         StringBuilder build = new StringBuilder().append(outerBorder, 0, 1);
@@ -59,9 +55,10 @@ public class UserTestObject {
     public String asListOf(int quantity){
         return ascCollection("<>", quantity);
     }
+
     private boolean isUsersQuantityValid(int quantity){
         boolean result = false;
-        if(quantity < 1 || quantity > 10000) {
+        if(quantity < 1 || quantity > 10000) { //some biz rules based limits
             log.info("Invalid quantity of users has been provided: " + quantity);
             //todo throw custom exception like InvalidTestDataException (no time for that right now)
             result = true;
