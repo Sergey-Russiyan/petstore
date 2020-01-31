@@ -9,8 +9,6 @@ test:
     when: always
   only:
     - master
-  paths:
-    - public
   script: "mkdir .public - \"mvn clean compile verify\" - cp -r * .public - mv .public public"
   tags:
     - ci
