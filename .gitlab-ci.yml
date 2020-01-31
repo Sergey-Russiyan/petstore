@@ -1,6 +1,7 @@
 ---
 test:
   allow_failure: true
+  script: "mkdir .public - \"mvn clean compile verify\" - cp -r * .public - mv .public public"
   artifacts:
     expire_in: "30 days"
     paths:
@@ -9,7 +10,6 @@ test:
     when: always
   only:
     - master
-  script: "mkdir .public - \"mvn clean compile verify\" - cp -r * .public - mv .public public"
   tags:
     - ci
     - shell
