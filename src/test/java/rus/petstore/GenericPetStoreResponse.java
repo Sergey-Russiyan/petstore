@@ -1,4 +1,4 @@
-package starter.petstore;
+package rus.petstore;
 
 import net.serenitybdd.rest.SerenityRest;
 

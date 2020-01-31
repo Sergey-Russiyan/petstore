@@ -1,9 +1,9 @@
-package starter.entity;
+package rus.entity;
 
 import com.google.gson.JsonObject;
 import lombok.Data;
 import lombok.Getter;
-import starter.utils.RandomUtils;
+import rus.utils.RandomUtils;
 
 import java.time.Instant;
 import java.util.Arrays;

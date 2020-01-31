@@ -1,4 +1,4 @@
-package starter.utils;
+package rus.utils;
 
 import java.util.Random;
 

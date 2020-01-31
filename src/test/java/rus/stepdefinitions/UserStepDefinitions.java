@@ -1,4 +1,4 @@
-package starter.stepdefinitions;
+package rus.stepdefinitions;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -6,8 +6,8 @@ import io.cucumber.datatable.DataTable;
 import io.restassured.RestAssured;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
-import starter.entity.UserTestObject;
-import starter.status.Application;
+import rus.entity.UserTestObject;
+import rus.status.Application;
 
 import java.util.List;
 import java.util.Map;

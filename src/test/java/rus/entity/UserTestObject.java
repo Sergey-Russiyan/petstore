@@ -1,8 +1,8 @@
-package starter.entity;
+package rus.entity;
 
 import com.google.gson.JsonObject;
 import lombok.Data;
-import starter.utils.RandomUtils;
+import rus.utils.RandomUtils;
 import java.util.logging.Logger;
 
 @Data

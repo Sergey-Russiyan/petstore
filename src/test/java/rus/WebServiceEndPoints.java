@@ -1,4 +1,4 @@
-package starter;
+package rus;
 
 public enum WebServiceEndPoints {
     STATUS                  (""),

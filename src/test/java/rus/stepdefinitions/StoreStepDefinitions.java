@@ -1,10 +1,10 @@
-package starter.stepdefinitions;
+package rus.stepdefinitions;
 
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
-import starter.entity.OrderTestObject;
-import starter.petstore.GenericPetStoreResponse;
-import starter.status.Application;
+import rus.entity.OrderTestObject;
+import rus.petstore.GenericPetStoreResponse;
+import rus.status.Application;
 
 public class StoreStepDefinitions {
 

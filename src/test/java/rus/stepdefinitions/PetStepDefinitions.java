@@ -1,15 +1,13 @@
-package starter.stepdefinitions;
+package rus.stepdefinitions;
 
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.RestAssured;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
-import starter.petstore.GenericPetStoreResponse;
-import starter.status.Application;
+import rus.petstore.GenericPetStoreResponse;
+import rus.status.Application;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static starter.status.AppStatus.RUNNING;
+import static rus.status.AppStatus.RUNNING;
 
 public class PetStepDefinitions {
 

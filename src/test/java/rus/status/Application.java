@@ -1,13 +1,13 @@
-package starter.status;
+package rus.status;
 
 import io.restassured.RestAssured;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
-import starter.entity.OrderTestObject;
-import starter.entity.UserTestObject;
+import rus.entity.OrderTestObject;
+import rus.entity.UserTestObject;
 
 import static io.restassured.http.ContentType.JSON;
-import static starter.WebServiceEndPoints.*;
+import static rus.WebServiceEndPoints.*;
 
 public class Application {
 

@@ -1,8 +1,8 @@
-package starter.petstore;
+package rus.petstore;
 
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
-import starter.WebServiceEndPoints;
+import rus.WebServiceEndPoints;
 
 public class GetPetWithId {
 
