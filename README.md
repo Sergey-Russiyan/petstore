@@ -128,7 +128,7 @@ more business-focused classes, which perform the actual REST calls.
 
 ```java
     @Steps
-    ApplicationStatus theApplication;
+    Application theApplication;
 
     @Given("the application is running")
     public void the_application_is_running() {
@@ -142,12 +142,12 @@ more business-focused classes, which perform the actual REST calls.
 ```
 
 The actual REST calls are performed using RestAssured in the action classes,
- like `ApplicationStatus` here. 
+ like `Application` here. 
 These use either RestAssured (if we don't want the queries to appear in the reports)
  or SerenityRest (if we do):
 
 ```java
-public class ApplicationStatus {
+public class Application {
 
     public AppStatus currentStatus() {
         int statusCode = RestAssured.get(STATUS.getUrl()).statusCode();
@@ -171,12 +171,56 @@ which lets us make a RestAssured assertion on the last response the server sent 
         restAssuredThat(lastResponse -> lastResponse.body(equalTo(expectedMessage)));
     }
 ```
+## Run tests locally
+**Prerequisites (for Windows)**
+ 1. [Java](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed and 
+ [configured](https://docs.oracle.com/cd/E19182-01/821-0917/inst_jdk_javahome_t/index.html);
+ 2. [Maven](http://maven.apache.org/download.cgi) installed and [configured](https://mkyong.com/maven/how-to-install-maven-in-windows/);
+ 3. IDE (e.g. [IntelliJ IDEA 'Community edition'](https://www.jetbrains.com/idea/download/#section=windows)) installed and configured;
+   
+ ***Optional***
+ 1. [Github](https://github.com/) account created;
+ 2. [GitLab](https://gitlab.com/) account created;
+ 
+ Open IDE terminal ([Ctr]+[F12]) and run maven command `mvn clean verify`.
+ Thus - all scenarios located under `features` folder will be executed.
+ NOTE: you may exclude some scenarios from test run, for example affected by exiting bug/issue
+ by placing `@issue` annotation above `Scenario` word.
+ ```Gerkin
+@issue
+  Scenario: Application delete pet
+    Given the application is running
+    When I delete pet with id "555"
+    Then the API should return response with status code 200
+ ```
+Available annotations or tags may be enumerated in `CucumberTestSuite` class
+see `tags = "~@issue"` - to exclude all scenarios with such tag from test run
+and `tags = "@issue"` (without *tilda* ~ symbol) to include
+ ```java
+@CucumberOptions(
+        tags = "~@issue",
+        plugin = {"pretty"},
+        features = "classpath:features")
+public class CucumberTestSuite {
+}
+ ```
+***
+## Run tests at CI
+
+Currently CI at Gitlab run whole suite each time when commit has been made at Github and
+Gitlab sync with main repo.
+You can download zipped test results at [Gitlab Jobs URL](https://gitlab.com/pet-store-fans/pet-store/-/jobs)
+
+TODO Point of improvement - publish test report at github pages per build.
 
 ## Living documentation
 
 You can generate full Serenity reports by running `mvn clean verify`. 
 This includes both the living documentation from the feature files.  
 
+Report will be available at `src\target\site\serenity\index.html` file.  
+
+#####Sample report structure:  
 **[Overall Test Results]** Tab  
 
 ![](src/docs/overall_test_results_1.png)  

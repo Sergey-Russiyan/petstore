@@ -6,21 +6,15 @@ test:
       - target/site/serenity
       - public
     when: always
-  only:
-    - master
-    - pages
-  script:
-    - "mvn clean compile verify"
-  tags:
-    - ci
-    - shell
-pages:
   script:
     - mkdir .public
+    - "mvn clean compile verify"
     - cp -r * .public
     - mv .public public
-  artifacts:
     paths:
       - public
   only:
     - master
+  tags:
+    - ci
+    - shell
