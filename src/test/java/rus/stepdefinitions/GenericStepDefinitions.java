@@ -3,6 +3,7 @@ package rus.stepdefinitions;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import cucumber.api.java.en.Then;
+import io.restassured.RestAssured;
 import net.serenitybdd.rest.SerenityRest;
 
 import java.util.HashMap;
@@ -23,6 +24,7 @@ public class GenericStepDefinitions {
     }
     @Then("the API should return response which contains {string}")
     public void the_API_should_return_part_contains(String expectedMessage) {
+        SerenityRest.given().log().all();
         assertTrue("Response not contains: " + expectedMessage,
                 SerenityRest.lastResponse().body().asString().contains(expectedMessage));
     }

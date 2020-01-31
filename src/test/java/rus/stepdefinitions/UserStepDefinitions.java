@@ -29,6 +29,14 @@ public class UserStepDefinitions {
                     SerenityRest.lastResponse().statusCode(), 200);
         }
     }
+    @When("I check user login with invalid credentials:")
+    public void i_check_user_login_with_invalid_credentials(List<Map<String, String>> credentials) {
+        for(Map<String, String> eachCred : credentials){
+            theApplication.getUserLogin(eachCred.get("login"), eachCred.get("password"));
+            assertEquals("Unexpected response code when user login with valid credentials",
+                    SerenityRest.lastResponse().statusCode(), 400);
+        }
+    }
     @When("I check user with login:")
     public void i_check_user_login_with_name_and_password(DataTable dataTable) {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();

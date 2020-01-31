@@ -1,6 +1,6 @@
   Feature: Check on user login with valid credentials
 
-  The `/user/login` end point returns
+  The `/user/login` end point allows user to log in with credentials
 
   Scenario: Application user login with valid credentials
     Given the application is running
