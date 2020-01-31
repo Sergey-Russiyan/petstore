@@ -253,12 +253,13 @@ And also details of the REST requests and responses that were executed during th
 ***
 
 ## Want to learn more?
-For more information about Serenity BDD, you can read the [**Serenity BDD Book**](https://serenity-bdd.github.io/theserenitybook/latest/index.html),
- the official online Serenity documentation source.
- 
+For more information about Serenity BDD, you can read the 
+[**Serenity BDD Book**](https://serenity-bdd.github.io/theserenitybook/latest/index.html),
+ the official online Serenity documentation source.  
+Or (and) read [Cucumber book](https://media.pragprog.com/titles/hwcuc2/gherkin.pdf) to learn more about BDD tips and tricks.
  
  ***
-###Documented endpoint interactions and schema
+## Documented endpoint interactions and schema
  ***
  
  ```YML
