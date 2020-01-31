@@ -7,6 +7,13 @@ This project show you how to test petstore with REST-API testing using Serenity 
 Execute Git command for cloning: `https://github.com/Sergey-Russiyan/petstore`  
 Or simply [download a zip](https://github.com/Sergey-Russiyan/petstore) file.
 
+## Organisational structure
+
+1. Master repo located at [GitHub](https://github.com/Sergey-Russiyan/petstore) its [public]
+2. [GitLab group](https://gitlab.com/pet-store-fans/pet-store) are mirroring report from p.1 its [public] 
+3. At [GitHub pages](https://sergey-russiyan.github.io/petstore/) hosted all related documentation and test results
+
+
 ## The petstore project
 The best place to start with Serenity and Cucumber is to clone or download the  project on Github ([https://github.com/](https://github.com/)). 
 This project allows you to create run and analyze test scenarios for testing API end-points of 

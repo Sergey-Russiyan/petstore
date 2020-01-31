@@ -1,13 +1,25 @@
 test:
   allow_failure: true
   artifacts:
-    expire_in: ~
+    expire_in: 30 days
     paths:
       - target/site/serenity
       - public
     when: always
+  only:
+    - master
   script:
     - "mvn clean compile verify"
   tags:
     - ci
     - shell
+pages:
+  script:
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
