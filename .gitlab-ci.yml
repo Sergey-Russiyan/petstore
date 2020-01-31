@@ -3,7 +3,9 @@ test:
   artifacts:
     expire_in: ~
     paths:
-      - build/target/site/serenity/
+      - public
+    only:
+      - master
     when: always
   script:
     - "mvn clean compile verify"
